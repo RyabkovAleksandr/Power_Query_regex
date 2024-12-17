@@ -1,0 +1,17 @@
+//g (global) - Поиск всех совпадений в строке, а не только первого.
+//i (insensitive) - Нечувствительный к регистру поиск.
+//m (multiline) - Многострочный поиск, где ^ и $ соответствуют началу/концу каждой строки, а не всей строки.
+//s (dotAll) - Позволяет символу . соответствовать символам новой строки.
+//u (unicode) - Обрабатывает строку как последовательность кодовых точек Unicode, а не как последовательность кодовых единиц UTF-16.
+//y (sticky) - Поиск начинается с позиции, указанной свойством lastIndex регулярного выражения
+
+let fx=(txt as text, regex as text, delim as text)=> 
+Web.Page("<script>
+var x = '" & txt & "'; 
+var delim = '" & delim & "'; 
+var pattern = /" & regex & "/i; 
+var result = x.match(pattern).join(delim); 
+document.write(result);
+</script>")[Data]{0}[Children]{0}[Children]{1}[Text]{0}
+in 
+fx
